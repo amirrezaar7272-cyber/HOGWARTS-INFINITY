@@ -112,7 +112,9 @@ using (student_id = (select auth.uid()));
 
 -- Explicit Data API grants: tables remain protected by RLS.
 grant usage on schema public to authenticated;
-grant select, update on public.profiles to authenticated;
+revoke update on public.profiles from authenticated;
+grant select on public.profiles to authenticated;
+grant update (display_name, house) on public.profiles to authenticated;
 grant select, insert, update, delete on public.classrooms to authenticated;
 grant select, insert, delete on public.enrollments to authenticated;
 
