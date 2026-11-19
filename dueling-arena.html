@@ -6,6 +6,50 @@
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{--gold:#e8c979;--ink:#eaf0f8;--muted:#aab6c9;--panel:#121d30;--line:#ffffff20}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -10%,#344b68 0,#111b2d 48%,#080d18 100%);color:var(--ink);font:15px/1.7 Vazirmatn,Arial,sans-serif}.wrap{max-width:1200px;margin:auto;padding:14px}.top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding:8px 2px 14px}.top a{color:var(--gold);text-decoration:none}.brand{font:800 17px Georgia;direction:ltr;letter-spacing:1px}.hero{text-align:center;padding:20px 0 14px}.hero h1{font-size:clamp(27px,5vw,43px);margin:4px}.hero p,.muted{color:var(--muted);font-size:13px}.eyebrow{color:var(--gold);letter-spacing:3px;font-size:11px}.layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:14px}.panel,.card{background:linear-gradient(145deg,#1a2940,#101a2b);border:1px solid var(--line);border-radius:15px;padding:14px;box-shadow:0 15px 40px #0004}.arena-wrap{position:relative}.hud{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;margin-bottom:10px}.stat small{display:block;color:var(--muted);font-size:11px}.stat strong{font-size:13px}.meter{height:9px;border-radius:20px;background:#ffffff16;overflow:hidden;margin-top:3px}.meter i{display:block;height:100%;width:100%;transition:width .15s;background:linear-gradient(90deg,#27966c,#8fe3ad)}.meter.enemy i{background:linear-gradient(90deg,#a52e42,#ff8790)}.meter.mana i{background:linear-gradient(90deg,#2863a5,#7ccfff)}.wave{text-align:center;color:var(--gold);font-weight:800;font-size:13px}canvas{display:block;width:100%;aspect-ratio:16/8.4;background:#0b1725;border:1px solid #ffffff25;border-radius:12px;touch-action:none}.overlay{position:absolute;inset:48px 0 0;display:flex;align-items:center;justify-content:center;text-align:center;background:#050a12b8;border-radius:12px;padding:18px}.overlay.hidden{display:none}.overlay-box{max-width:440px}.overlay h2{font-size:28px;color:var(--gold);margin:0 0 8px}.btn{border:1px solid #ffffff25;border-radius:9px;padding:9px 12px;color:#101827;background:linear-gradient(120deg,#f2dfa9,#c99b2e);font:700 13px Vazirmatn;cursor:pointer}.btn.secondary{background:#ffffff0c;color:var(--ink)}.btn.danger{background:linear-gradient(120deg,#d85c67,#8f2435);color:white}.btn:disabled{opacity:.35;cursor:not-allowed}.actions,.spell-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px}.spell{position:relative;text-align:right;min-height:62px;background:#0c1728;color:var(--ink);border:1px solid #ffffff22;border-radius:10px;padding:8px;cursor:pointer;font:600 13px Vazirmatn}.spell b{display:block;color:var(--gold)}.spell small{color:var(--muted);font-size:10px}.spell:disabled{opacity:.32}.spell .key{position:absolute;left:7px;top:5px;font-size:10px;color:#fff8}.side h3{margin:0 0 7px;color:var(--gold);font-size:16px}.side .card{margin-bottom:12px}.cool{height:4px;background:#ffffff18;border-radius:9px;margin-top:5px;overflow:hidden}.cool i{display:block;height:100%;background:var(--gold);width:100%}.control-row{display:flex;gap:8px;flex-wrap:wrap}.joystick{width:132px;height:132px;border-radius:50%;background:radial-gradient(circle,#ffffff12,#ffffff05);border:2px solid #ffffff30;position:relative;touch-action:none;margin:8px auto}.knob{width:48px;height:48px;border-radius:50%;position:absolute;left:40px;top:40px;background:linear-gradient(130deg,#f2dfa9,#b98927);box-shadow:0 5px 15px #0009;pointer-events:none}.mini{display:grid;grid-template-columns:1fr 1fr;gap:7px}.mini div{background:#ffffff08;padding:8px;border-radius:8px;text-align:center}.mini b{display:block;color:var(--gold);font-size:17px}.log{height:112px;overflow:auto;background:#091321;border-radius:9px;padding:8px;font-size:11px;color:#cbd6e5}.log p{margin:2px 0}.notice{font-size:11px;color:var(--muted);margin:12px 2px}.kbd{display:inline-block;border:1px solid #ffffff40;border-radius:4px;padding:0 5px;font-size:10px;color:var(--gold)}@media(max-width:850px){.layout{grid-template-columns:1fr}.side{display:grid;grid-template-columns:1fr 1fr;gap:10px}.side .card{margin:0}}@media(max-width:520px){.wrap{padding:9px}.side{grid-template-columns:1fr}.hud{grid-template-columns:1fr 1fr}.wave{grid-column:1/-1;grid-row:1}.stat strong{font-size:12px}.spell-grid{grid-template-columns:repeat(2,1fr)}canvas{aspect-ratio:1.12}.overlay{inset:38px 0 0}.hero{padding-top:13px}}
+
+/* Landscape mobile combat HUD */
+.mobile-controls{display:none}
+.spell-orb{display:none}
+@media(max-width:850px){
+  body{overflow:hidden}
+  .wrap{padding:0;max-width:none}
+  .top,.hero,.side,.arena-wrap>.actions,.arena-wrap>.muted{display:none!important}
+  .layout{display:block}
+  .arena-wrap{position:fixed;inset:0;padding:0;border:0;border-radius:0;background:#081321;box-shadow:none;z-index:1}
+  .hud{position:fixed;z-index:5;top:5px;left:10px;right:10px;margin:0;grid-template-columns:minmax(100px,1fr) auto minmax(100px,1fr);gap:12px;pointer-events:none;text-shadow:0 2px 5px #000}
+  .stat{background:#081321a8;border:1px solid #ffffff20;border-radius:9px;padding:5px 8px;backdrop-filter:blur(6px)}
+  .stat strong{font-size:11px}.stat small{font-size:9px}.meter{height:6px;margin-top:2px}
+  .wave{background:#081321a8;border:1px solid #ffffff20;border-radius:9px;padding:4px 10px;font-size:11px;backdrop-filter:blur(6px)}
+  canvas#arena{position:fixed;inset:0;width:100vw;height:100dvh;aspect-ratio:auto;border:0;border-radius:0;z-index:0}
+  .mobile-controls{display:block;position:fixed;inset:0;z-index:8;pointer-events:none}
+  .left-controls{position:absolute;left:8px;bottom:7px;width:190px;height:190px;pointer-events:none}
+  .mobile-stick{position:absolute;left:36px;bottom:29px;width:116px;height:116px;border-radius:50%;border:2px solid #e8d39a99;background:radial-gradient(circle,#ffffff22,#15263caa 68%,#07111fcc);box-shadow:0 0 24px #0009,inset 0 0 20px #ffffff12;touch-action:none;pointer-events:auto}
+  .mobile-knob{position:absolute;width:46px;height:46px;left:33px;top:33px;border-radius:50%;background:linear-gradient(145deg,#f4e4b5,#b8892e);border:2px solid #fff5;box-shadow:0 5px 15px #000b;pointer-events:none}
+  .stick-label{position:absolute;left:75px;bottom:4px;color:#fff9;font-size:9px;text-shadow:0 1px 4px #000}
+  .spell-orbit{position:absolute;inset:0;pointer-events:none}
+  .spell-orb{display:flex;position:absolute;width:39px;height:39px;align-items:center;justify-content:center;border-radius:50%;padding:0;background:radial-gradient(circle at 35% 25%,#344b67,#101a2b 75%);border:2px solid var(--orb,#e8c979);box-shadow:0 2px 12px #000b,0 0 9px color-mix(in srgb,var(--orb) 45%,transparent);color:var(--orb);font-size:17px;touch-action:manipulation;pointer-events:auto}
+  .spell-orb:disabled{opacity:.3;filter:grayscale(.7)}
+  .orb1{left:78px;top:0;--orb:#ffe17b}.orb2{left:139px;top:30px;--orb:#9edaff}.orb3{left:139px;top:101px;--orb:#ff814e}.orb4{left:78px;top:145px;--orb:#7deaff}.orb5{left:17px;top:101px;--orb:#8adfff}.orb6{left:17px;top:30px;--orb:#65ff9b}
+  .right-controls{position:absolute;right:9px;bottom:12px;display:flex;flex-direction:column;gap:8px;pointer-events:auto}
+  .round-action{width:57px;height:53px;border-radius:15px;border:1px solid #ffffff55;background:linear-gradient(145deg,#263c57ee,#0a1424ee);color:#f5e3b2;font:800 21px Vazirmatn;box-shadow:0 3px 12px #0009;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;touch-action:manipulation}
+  .round-action small{font:600 9px Vazirmatn;color:#eaf0f8}
+  .dash-action{border-color:#e8c979}.potion-action{border-color:#70d6a0}.pause-action{border-color:#8fc8ee}.reset-action{border-color:#d6a4f0}
+  .overlay{position:fixed;inset:0;z-index:20;background:#050a12d9}
+  .overlay-box{max-width:360px;padding:15px;background:#101b2ceF;border:1px solid #e8c97966;border-radius:15px}
+  .overlay h2{font-size:22px}.overlay p{font-size:12px}
+  .rotate-hint{display:none}
+}
+@media(max-width:850px) and (orientation:portrait){
+  .rotate-hint{display:flex;position:fixed;inset:0;z-index:50;background:#080e1bfa;align-items:center;justify-content:center;text-align:center;padding:28px}
+  .rotate-hint strong{font-size:24px;color:var(--gold)}
+  .rotate-hint p{color:var(--muted);max-width:270px}
+}
+@media(max-height:430px) and (orientation:landscape) and (max-width:950px){
+  .left-controls{transform:scale(.83);transform-origin:bottom left;left:3px;bottom:0}
+  .right-controls{transform:scale(.88);transform-origin:bottom right;right:4px;bottom:5px;gap:5px}
+  .hud{top:3px}.stat{padding:3px 6px}
+}
+
 </style></head>
 <body><main class="wrap">
 <header class="top"><a class="brand" href="index.html">HOGWARTS INFINITY</a><nav><a href="index.html">تالار اصلی</a>　<a href="wizard-profile.html">پروفایل جادوگر</a></nav></header>
@@ -17,6 +61,27 @@
 <div class="stat" style="text-align:left"><strong>🤖 دشمن <span id="enemyHp">100</span></strong><div class="meter enemy"><i id="enemyBar"></i></div><small id="enemyState">در حال جست‌وجو</small></div>
 </div>
 <canvas id="arena" width="960" height="504" aria-label="میدان مبارزه جادویی"></canvas>
+<div class="mobile-controls" aria-label="کنترل‌های بازی">
+  <div class="left-controls">
+    <div class="spell-orbit">
+      <button class="spell-orb orb1" data-spell="stupefy" aria-label="استوپفای" title="استوپفای">✦</button>
+      <button class="spell-orb orb2" data-spell="expelliarmus" aria-label="اکسپلیارموس" title="اکسپلیارموس">✧</button>
+      <button class="spell-orb orb3" data-spell="incendio" aria-label="اینسندیو" title="اینسندیو">🔥</button>
+      <button class="spell-orb orb4" data-spell="glacius" aria-label="گلاسیوس" title="گلاسیوس">❄</button>
+      <button class="spell-orb orb5" data-spell="protego" aria-label="پروتگو" title="پروتگو">🛡</button>
+      <button class="spell-orb orb6" data-spell="avada" aria-label="آواداکداورا" title="آواداکداورا">☠</button>
+    </div>
+    <div class="mobile-stick" id="mobileStick"><div class="mobile-knob" id="mobileKnob"></div></div>
+    <div class="stick-label">حرکت</div>
+  </div>
+  <div class="right-controls">
+    <button class="round-action dash-action" id="landscapeDash" aria-label="جاخالی">💨<small>جاخالی</small></button>
+    <button class="round-action potion-action" id="landscapePotion" aria-label="معجون درمان">🧪<small>معجون</small></button>
+    <button class="round-action pause-action" id="landscapePause" aria-label="توقف">Ⅱ<small>توقف</small></button>
+    <button class="round-action reset-action" id="landscapeReset" aria-label="شروع دوباره">↻<small>شروع</small></button>
+  </div>
+</div>
+<div class="rotate-hint" id="rotateHint"><div><strong>📱 صفحه را افقی کن</strong><p>برای تجربه کامل میدان نبرد، گوشی را به حالت افقی بچرخان.</p></div></div>
 <div class="overlay" id="overlay"><div class="overlay-box"><h2 id="overlayTitle">آماده‌ای، جادوگر؟</h2><p id="overlayText">پنج موج دشمن در انتظار توست. در موج آخر با باس قدرتمند روبه‌رو می‌شوی. حرکت کن، جاخالی بده و طلسم‌ها را ترکیب کن.</p><button class="btn" id="startBtn">شروع نبرد</button></div></div>
 <div class="actions"><button class="btn secondary" id="pauseBtn">⏸ توقف</button><button class="btn secondary" id="restartBtn">↻ شروع دوباره</button><button class="btn secondary" id="dashBtn">💨 جاخالی سریع <span class="kbd">Space</span></button><button class="btn secondary" id="potionBtn">🧪 معجون درمان</button></div>
 <p class="muted">حرکت: جوی‌استیک یا WASD / تیراندازی: دکمه طلسم / جاخالی: Space</p>
@@ -82,6 +147,25 @@ function pause(){if(!running)return;paused=!paused;if(paused){cancelAnimationFra
 $('startBtn').onclick=start;$('pauseBtn').onclick=pause;$('restartBtn').onclick=reset;$('dashBtn').onclick=dash;$('mobileDash').onclick=dash;$('potionBtn').onclick=potion;$('mobilePotion').onclick=potion;document.querySelectorAll('[data-spell]').forEach(b=>b.addEventListener('click',()=>cast(b.dataset.spell)));
 window.addEventListener('keydown',e=>{let k=e.key.toLowerCase();keys[k]=true;if([' ','arrowup','arrowdown','arrowleft','arrowright'].includes(k))e.preventDefault();if(k===' ')dash();if('123456'.includes(k))cast(['stupefy','expelliarmus','incendio','glacius','protego','avada'][Number(k)-1])});window.addEventListener('keyup',e=>keys[e.key.toLowerCase()]=false);
 const stickEl=$('stick'),knob=$('knob');function setStick(e){let r=stickEl.getBoundingClientRect(),x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2,l=Math.hypot(x,y)||1,m=Math.min(39,l);stick={x:x/l*m/39,y:y/l*m/39};knob.style.left=(40+x/l*m)+'px';knob.style.top=(40+y/l*m)+'px'}function release(){pointer=false;stick={x:0,y:0};knob.style.left='40px';knob.style.top='40px'}stickEl.addEventListener('pointerdown',e=>{pointer=true;stickEl.setPointerCapture(e.pointerId);setStick(e)});stickEl.addEventListener('pointermove',e=>{if(pointer)setStick(e)});stickEl.addEventListener('pointerup',release);stickEl.addEventListener('pointercancel',release);
+
+/* Dedicated landscape touch controls */
+const mobileStickEl=$('mobileStick'),mobileKnob=$('mobileKnob');
+let mobilePointer=false;
+function moveMobileStick(e){
+ const r=mobileStickEl.getBoundingClientRect(),cx=r.width/2,cy=r.height/2;
+ let x=e.clientX-r.left-cx,y=e.clientY-r.top-cy,len=Math.hypot(x,y)||1,mag=Math.min(34,len);
+ stick={x:x/len*mag/34,y:y/len*mag/34};
+ mobileKnob.style.left=(cx-23+x/len*mag)+'px';mobileKnob.style.top=(cy-23+y/len*mag)+'px';
+}
+function resetMobileStick(){mobilePointer=false;stick={x:0,y:0};mobileKnob.style.left='33px';mobileKnob.style.top='33px'}
+mobileStickEl.addEventListener('pointerdown',e=>{mobilePointer=true;mobileStickEl.setPointerCapture(e.pointerId);moveMobileStick(e)});
+mobileStickEl.addEventListener('pointermove',e=>{if(mobilePointer)moveMobileStick(e)});
+mobileStickEl.addEventListener('pointerup',resetMobileStick);mobileStickEl.addEventListener('pointercancel',resetMobileStick);
+$('landscapeDash').addEventListener('click',dash);
+$('landscapePotion').addEventListener('click',potion);
+$('landscapePause').addEventListener('click',pause);
+$('landscapeReset').addEventListener('click',reset);
+
 player=freshPlayer();spawnWave();draw();updateHud();
 })();
 </script></body></html>
