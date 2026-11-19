@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#100d1c"><title>حساب کاربری | Hogwarts Infinity</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:18px;background:radial-gradient(ellipse at 50% 0,#39284b,transparent 55%),#100d1c;color:#f3ead5;font-family:Vazirmatn,sans-serif}.panel{width:min(100%,460px);padding:28px;background:#211a30;border:1px solid #d6b56d55;border-radius:18px;box-shadow:0 20px 70px #0006}.brand{font:700 16px Cinzel;color:#d6b56d;text-align:center;direction:ltr}.panel h1{text-align:center;font-size:25px;margin:18px 0 5px}.sub{text-align:center;color:#b9b0c5;font-size:13px;margin:0 0 22px}.tabs{display:flex;gap:8px}.tabs button,.submit{flex:1;border:1px solid #d6b56d66;border-radius:9px;padding:11px;background:transparent;color:#f3ead5;font:inherit;cursor:pointer}.tabs button.active,.submit{background:#d6b56d;color:#21182b;font-weight:800}.field{margin:14px 0;display:grid;gap:6px}.field label{font-size:13px;color:#c7bbd0}.field input{padding:12px;border-radius:8px;border:1px solid #ffffff28;background:#100d1c;color:white;font:inherit}.submit{width:100%;margin-top:8px}.status{font-size:13px;min-height:25px;color:#d6b56d}.hint{font-size:11px;color:#b9b0c5;line-height:1.9}.back{display:block;text-align:center;color:#d6b56d;margin-top:18px;font-size:13px}
+</style></head><body><main class="panel"><div class="brand">HOGWARTS INFINITY</div><h1>ورود به دنیای جادو</h1><p class="sub">حساب دانش‌آموز یا استاد هاگوارتز</p>
+<div class="tabs"><button id="loginTab" class="active" type="button">ورود</button><button id="signupTab" type="button">ثبت‌نام</button></div>
+<form id="authForm"><div class="field" id="nameWrap" hidden><label for="name">نام نمایشی</label><input id="name" maxlength="50" autocomplete="nickname" placeholder="نام جادوآموز"></div><div class="field"><label for="email">ایمیل</label><input id="email" type="email" required autocomplete="email" placeholder="you@example.com"></div><div class="field"><label for="password">رمز عبور</label><input id="password" type="password" required minlength="8" autocomplete="current-password" placeholder="حداقل ۸ نویسه"></div><button class="submit" id="submit" type="submit">ورود</button></form>
+<p class="status" id="status" aria-live="polite"></p><p class="hint">برای امنیت، ثبت‌نام عمومی فقط حساب دانش‌آموز می‌سازد. نقش استاد باید توسط مدیر از پنل پایگاه داده تعیین شود.</p><a class="back" href="index.html">بازگشت به تالار اصلی</a></main>
+<script type="module">
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.119.1';
+import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from './supabase-config.js';
+const $=id=>document.getElementById(id);let mode='login';let client;
+const configured=!SUPABASE_URL.includes('YOUR_PROJECT_REF')&&!SUPABASE_PUBLISHABLE_KEY.includes('YOUR_SUPABASE');
+if(configured)client=createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
+function setMode(next){mode=next;$('loginTab').classList.toggle('active',mode==='login');$('signupTab').classList.toggle('active',mode==='signup');$('nameWrap').hidden=mode!=='signup';$('submit').textContent=mode==='login'?'ورود':'ساخت حساب دانش‌آموز';$('status').textContent=''}
+$('loginTab').onclick=()=>setMode('login');$('signupTab').onclick=()=>setMode('signup');
+$('authForm').onsubmit=async e=>{e.preventDefault();if(!configured){$('status').textContent='اتصال پایگاه داده هنوز تنظیم نشده؛ فایل supabase-config.js باید با آدرس پروژه و کلید عمومی تکمیل شود.';return}
+const email=$('email').value.trim(),password=$('password').value;
+$('submit').disabled=true;$('status').textContent='در حال بررسی…';
+try{if(mode==='signup'){const {data,error}=await client.auth.signUp({email,password,options:{data:{display_name:$('name').value.trim()||'جادوآموز'}}});if(error)throw error;$('status').textContent=data.session?'حساب ساخته شد و وارد شدی.':'حساب ساخته شد؛ ایمیلت را برای تأیید بررسی کن.'}
+else{const {error}=await client.auth.signInWithPassword({email,password});if(error)throw error;$('status').textContent='ورود موفق بود. در حال انتقال…';location.href='dashboard.html'}}
+catch(err){$('status').textContent=err.message||'خطا در ارتباط با سرویس.'}finally{$('submit').disabled=false}};
+</script></body></html>
