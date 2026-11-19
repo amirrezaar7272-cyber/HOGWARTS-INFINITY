@@ -2,7 +2,32 @@
 <html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#100d1c"><title>پنل کاربری | Hogwarts Infinity</title><link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#39284b,transparent 55%),#100d1c;color:#f3ead5;font-family:Vazirmatn,sans-serif;line-height:1.8}.wrap{max-width:1050px;margin:auto;padding:20px}.top{display:flex;justify-content:space-between;gap:12px;align-items:center;border-bottom:1px solid #ffffff1c;padding:12px 0 20px}.brand{font:700 17px Cinzel;color:#d6b56d;direction:ltr}.btn{padding:9px 14px;border:1px solid #d6b56d88;border-radius:9px;background:transparent;color:#f3ead5;font:inherit;cursor:pointer}.primary{background:#d6b56d;color:#21182b;font-weight:800}.hero{padding:32px 0 20px}.muted{color:#b9b0c5;font-size:13px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.card{padding:19px;border:1px solid #ffffff1c;border-radius:14px;background:linear-gradient(145deg,#261f38,#1c172b)}h1{font-size:clamp(26px,5vw,40px);margin:5px 0}h2{font-size:19px;margin:0 0 12px}.field{display:grid;gap:5px;margin:11px 0}.field label{font-size:12px;color:#b9b0c5}input,select{width:100%;background:#100d1c;color:#f3ead5;border:1px solid #ffffff28;border-radius:8px;padding:10px;font:inherit}.item{padding:12px;background:#100d1c88;border:1px solid #ffffff18;border-radius:10px;margin:9px 0}.item strong{display:block}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.status{min-height:24px;color:#d6b56d;font-size:12px}.hidden{display:none!important}@media(max-width:700px){.grid{grid-template-columns:1fr}.wrap{padding:15px}}
-</style></head><body><div class="wrap"><header class="top"><a class="brand" href="index.html">HOGWARTS INFINITY</a><button id="logout" class="btn">خروج از حساب</button></header>
+</style>
+<style id="hogwarts-four-house-theme">
+:root{--bg:#0b1220;--panel:#111d30;--panel2:#172740;--gold:#e7c77a;--cream:#f4f1e8;--muted:#b7c2d3;--line:#ffffff20;--gry:#a8323e;--rav:#2863a5;--sly:#267456;--huf:#c99b2e;--house-red:var(--gry);--house-blue:var(--rav);--house-green:var(--sly);--house-yellow:var(--huf)}
+body{background:radial-gradient(ellipse at 12% 0%,#a8323e22,transparent 34%),radial-gradient(ellipse at 88% 0%,#2863a522,transparent 34%),radial-gradient(ellipse at 50% 100%,#26745618,transparent 42%),var(--bg)!important;color:var(--cream)}
+a{color:#f0d58f}a:hover{color:#fff;text-shadow:0 0 14px #e7c77a66}
+.panel,.mission,.stat,.row,.notice,.badge,.house,.choice{backdrop-filter:blur(12px);box-shadow:0 14px 38px #0003}
+.panel,.mission,.row{border-color:#ffffff24;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+.panel:hover,.mission:hover,.row:hover{border-color:#e7c77a66;box-shadow:0 18px 44px #0005}
+.top{align-items:center;padding:10px 0 16px;border-bottom:1px solid #ffffff18}
+.brand{letter-spacing:1.5px;text-shadow:0 0 20px #e7c77a33}
+.top a:not(.brand){display:inline-block;padding:5px 10px;border-radius:999px;background:#ffffff0a}
+.btn{background:linear-gradient(120deg,#f0d58f,#c99b2e)!important;color:#151b26!important;border:0!important;box-shadow:0 7px 22px #c99b2e30;transition:transform .2s,filter .2s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.house[data-house="gry"]{border-color:#a8323e88;background:linear-gradient(145deg,#a8323e30,#111d30)}
+.house[data-house="rav"]{border-color:#2863a588;background:linear-gradient(145deg,#2863a530,#111d30)}
+.house[data-house="sly"]{border-color:#26745688;background:linear-gradient(145deg,#26745630,#111d30)}
+.house[data-house="huf"]{border-color:#c99b2e88;background:linear-gradient(145deg,#c99b2e30,#111d30)}
+.house[data-house="gry"].active{box-shadow:0 0 0 2px #a8323e inset,0 0 24px #a8323e33}.house[data-house="rav"].active{box-shadow:0 0 0 2px #2863a5 inset,0 0 24px #2863a533}.house[data-house="sly"].active{box-shadow:0 0 0 2px #267456 inset,0 0 24px #26745633}.house[data-house="huf"].active{box-shadow:0 0 0 2px #c99b2e inset,0 0 24px #c99b2e33}
+.row:nth-child(4n+1){border-right:4px solid var(--gry)}.row:nth-child(4n+2){border-right:4px solid var(--rav)}.row:nth-child(4n+3){border-right:4px solid var(--sly)}.row:nth-child(4n+4){border-right:4px solid var(--huf)}
+.mission:nth-child(4n+1){border-top:3px solid var(--gry)}.mission:nth-child(4n+2){border-top:3px solid var(--rav)}.mission:nth-child(4n+3){border-top:3px solid var(--sly)}.mission:nth-child(4n+4){border-top:3px solid var(--huf)}
+.choice:hover{border-color:var(--huf);background:#c99b2e14}.progress>div,.fill{background:linear-gradient(90deg,var(--gry),var(--rav),var(--sly),var(--huf))!important}
+input,select,textarea{background:#0b1525!important;color:var(--cream)!important;border:1px solid #ffffff2a!important;border-radius:10px!important}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #f0d58f;outline-offset:3px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+</style>
+</head><body><div class="wrap"><header class="top"><a class="brand" href="index.html">HOGWARTS INFINITY</a><button id="logout" class="btn">خروج از حساب</button></header>
 <section class="hero"><div style="color:#d6b56d;font-size:12px;letter-spacing:2px">YOUR WIZARDING PROFILE</div><h1>پنل جادوگری</h1><p class="muted" id="welcome">در حال بارگذاری حساب…</p></section>
 <div class="grid"><section class="card"><h2>پروفایل من</h2><div id="profile" class="muted">در حال دریافت اطلاعات…</div><p class="muted">نقش استاد فقط توسط مدیر قابل فعال‌سازی است.</p></section>
 <section class="card hidden" id="teacherCard"><h2>ساخت کلاس جدید</h2><form id="createForm"><div class="field"><label for="title">عنوان درس</label><input id="title" required minlength="3" maxlength="100" placeholder="مثلاً معجون‌سازی"></div><div class="field"><label for="subject">موضوع</label><input id="subject" maxlength="70" placeholder="معجون‌ها"></div><button class="btn primary">ایجاد کلاس</button></form><p class="status" id="createStatus"></p></section>
