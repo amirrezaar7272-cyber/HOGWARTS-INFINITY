@@ -2,7 +2,7 @@ name: Deploy Hogwarts Infinity to GitHub Pages
 
 on:
   push:
-    branches: [hogwarts-infinity]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
