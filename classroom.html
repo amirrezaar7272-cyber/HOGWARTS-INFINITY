@@ -7,6 +7,31 @@
 <style>
 :root{--bg:#100d1c;--panel:#1c172b;--panel2:#261f38;--gold:#d6b56d;--cream:#f3ead5;--muted:#b9b0c5;--line:#ffffff1c;--green:#75b48c}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#39284b,transparent 55%),var(--bg);color:var(--cream);font-family:Vazirmatn,sans-serif;line-height:1.8}a{color:inherit;text-decoration:none}.wrap{max-width:1050px;margin:auto;padding:22px}.top{display:flex;align-items:center;justify-content:space-between;gap:15px;border-bottom:1px solid var(--line);padding:12px 0 20px}.brand{font:700 19px Cinzel;color:var(--gold);direction:ltr}.back,.btn{border:1px solid #d6b56d88;border-radius:9px;padding:9px 14px;background:transparent;color:var(--cream);font:inherit;cursor:pointer}.btn.primary{background:var(--gold);color:#21182b;font-weight:800}.hero{padding:42px 0 22px}.eyebrow{color:var(--gold);font-size:12px;letter-spacing:2px;font-weight:700}.hero h1{font-size:clamp(30px,5vw,48px);margin:8px 0}.muted{color:var(--muted);font-size:14px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.tab{padding:9px 16px;border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--muted);cursor:pointer;font:inherit}.tab.active{border-color:var(--gold);color:var(--gold)}.layout{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card{background:linear-gradient(145deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:15px;padding:20px}.card h2{font-size:20px;margin:0 0 8px}.field{display:grid;gap:6px;margin:12px 0}.field label{font-size:13px;color:var(--muted)}input,select{width:100%;background:#100d1c;color:var(--cream);border:1px solid var(--line);border-radius:8px;padding:11px;font:inherit}button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:2px}.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.row .btn{flex:1}.notice{padding:13px;border-radius:10px;border:1px solid #d6b56d44;background:#d6b56d10;color:#e6d8b7;font-size:12px;margin:16px 0}.classlist{display:grid;gap:10px;margin-top:12px}.classitem{padding:13px;background:#100d1c88;border:1px solid var(--line);border-radius:10px}.classitem strong{display:block}.classitem small{color:var(--muted)}.empty{color:var(--muted);font-size:13px;padding:12px 0}.status{color:var(--green);font-size:12px;min-height:24px}.footer{text-align:center;border-top:1px solid var(--line);margin-top:35px;padding:22px;color:var(--muted);font-size:12px}@media(max-width:720px){.layout{grid-template-columns:1fr}.wrap{padding:16px}.top{align-items:flex-start}}
 </style>
+
+<style id="hogwarts-four-house-theme">
+:root{--bg:#0b1220;--panel:#111d30;--panel2:#172740;--gold:#e7c77a;--cream:#f4f1e8;--muted:#b7c2d3;--line:#ffffff20;--gry:#a8323e;--rav:#2863a5;--sly:#267456;--huf:#c99b2e;--house-red:var(--gry);--house-blue:var(--rav);--house-green:var(--sly);--house-yellow:var(--huf)}
+body{background:radial-gradient(ellipse at 12% 0%,#a8323e22,transparent 34%),radial-gradient(ellipse at 88% 0%,#2863a522,transparent 34%),radial-gradient(ellipse at 50% 100%,#26745618,transparent 42%),var(--bg)!important;color:var(--cream)}
+a{color:#f0d58f}a:hover{color:#fff;text-shadow:0 0 14px #e7c77a66}
+.panel,.mission,.stat,.row,.notice,.badge,.house,.choice{backdrop-filter:blur(12px);box-shadow:0 14px 38px #0003}
+.panel,.mission,.row{border-color:#ffffff24;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+.panel:hover,.mission:hover,.row:hover{border-color:#e7c77a66;box-shadow:0 18px 44px #0005}
+.top{align-items:center;padding:10px 0 16px;border-bottom:1px solid #ffffff18}
+.brand{letter-spacing:1.5px;text-shadow:0 0 20px #e7c77a33}
+.top a:not(.brand){display:inline-block;padding:5px 10px;border-radius:999px;background:#ffffff0a}
+.btn{background:linear-gradient(120deg,#f0d58f,#c99b2e)!important;color:#151b26!important;border:0!important;box-shadow:0 7px 22px #c99b2e30;transition:transform .2s,filter .2s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.house[data-house="gry"]{border-color:#a8323e88;background:linear-gradient(145deg,#a8323e30,#111d30)}
+.house[data-house="rav"]{border-color:#2863a588;background:linear-gradient(145deg,#2863a530,#111d30)}
+.house[data-house="sly"]{border-color:#26745688;background:linear-gradient(145deg,#26745630,#111d30)}
+.house[data-house="huf"]{border-color:#c99b2e88;background:linear-gradient(145deg,#c99b2e30,#111d30)}
+.house[data-house="gry"].active{box-shadow:0 0 0 2px #a8323e inset,0 0 24px #a8323e33}.house[data-house="rav"].active{box-shadow:0 0 0 2px #2863a5 inset,0 0 24px #2863a533}.house[data-house="sly"].active{box-shadow:0 0 0 2px #267456 inset,0 0 24px #26745633}.house[data-house="huf"].active{box-shadow:0 0 0 2px #c99b2e inset,0 0 24px #c99b2e33}
+.row:nth-child(4n+1){border-right:4px solid var(--gry)}.row:nth-child(4n+2){border-right:4px solid var(--rav)}.row:nth-child(4n+3){border-right:4px solid var(--sly)}.row:nth-child(4n+4){border-right:4px solid var(--huf)}
+.mission:nth-child(4n+1){border-top:3px solid var(--gry)}.mission:nth-child(4n+2){border-top:3px solid var(--rav)}.mission:nth-child(4n+3){border-top:3px solid var(--sly)}.mission:nth-child(4n+4){border-top:3px solid var(--huf)}
+.choice:hover{border-color:var(--huf);background:#c99b2e14}.progress>div,.fill{background:linear-gradient(90deg,var(--gry),var(--rav),var(--sly),var(--huf))!important}
+input,select,textarea{background:#0b1525!important;color:var(--cream)!important;border:1px solid #ffffff2a!important;border-radius:10px!important}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #f0d58f;outline-offset:3px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+</style>
 </head>
 <body><div class="wrap">
 <header class="top"><a class="brand" href="index.html">HOGWARTS INFINITY</a><a class="back" href="index.html">← بازگشت به تالار اصلی</a></header>
